@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Interactive from 'react-interactive';
 import { Link } from 'react-router-dom';
-import { Li } from '../styles/style';
-import s from '../styles/exampleTwoDeepComponent.style';
 
 const propTypes = {
   location: PropTypes.object.isRequired,
@@ -35,12 +32,10 @@ export default function ExampleTwoDeepComponent({ location }) {
     if (!queryPresent && !hashPresent) linkText = 'Show with query string and hash fragment';
 
     return (
-      <div style={s.lineContainer}>
-        <Interactive
-          as={Link}
+      <div>
+        <Link
           to={`/example/two-deep${queryString}${hashFragment}`}
-          {...s.link}
-        >{linkText}</Interactive>
+        >{linkText}</Link>
       </div>
     );
   }
