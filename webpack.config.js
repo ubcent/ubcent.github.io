@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: `${__dirname}/src/index.js`,
+  entry: `${__dirname}/src/index.jsx`,
   output: {
     path: `${__dirname}/build`,
     publicPath: '/build/',
@@ -30,7 +30,24 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]', 'postcss-loader', 'sass-loader'],
+        use: [
+          { loader: 'style-loader' },
+          { 
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[local]'
+            } 
+          },
+          { loader: 'postcss-loader' },
+          { 
+            loader: 'sass-loader',
+            options: {
+              includePaths: [resolve(__dirname, 'src')]
+            }
+          }
+        ],
         exclude: /node_modules/
       },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=[name]-[hash].[ext]' },
@@ -43,21 +60,21 @@ module.exports = {
 
   plugins: process.argv.indexOf('-p') === -1 ? [
     new HtmlWebpackPlugin({
-      template: `${__dirname}/src/index.html`,
+      template: `${__dirname}/template.html`,
       filename: '../index.html',
       inject: 'body',
     })
   ] : [
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false,
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: `${__dirname}/src/index.html`,
-      filename: '../index.html',
-      inject: 'body',
-    }),
-    new ExtractTextPlugin({ filename: 'app-[hash].css', disable: false, allChunks: true })
-  ],
+      new webpack.optimize.UglifyJsPlugin({
+        output: {
+          comments: false,
+        },
+      }),
+      new HtmlWebpackPlugin({
+        template: `${__dirname}/template.html`,
+        filename: '../index.html',
+        inject: 'body',
+      }),
+      new ExtractTextPlugin({ filename: 'app-[hash].css', disable: false, allChunks: true })
+    ],
 };
