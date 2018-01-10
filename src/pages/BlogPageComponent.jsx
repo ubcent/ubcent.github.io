@@ -1,12 +1,10 @@
 import React from 'react';
-import Interactive from 'react-interactive';
 import { Switch, Route, Link } from 'react-router-dom';
 import ExampleTwoDeepComponent from './ExampleTwoDeepComponent';
-import PageNotFound from './PageNotFound';
-import s from '../styles/exampleComponent.style';
+import PageNotFound from './PageNotFoundComponent';
 
 const ExamplePageText = () => (
-  <p style={s.p}>
+  <p>
     This is an example page. Refresh the page or copy/paste the url to
     test out the redirect functionality (this same page should load
       after the redirect).
@@ -30,12 +28,10 @@ export default function ExampleComponent() {
         render={() => (
           <div>
             <ExamplePageText />
-            <div style={s.pageLinkContainer}>
-              <Interactive
-                as={Link}
-                {...s.link}
+            <div>
+              <Link
                 to="/example/two-deep?field1=foo&field2=bar#boom!"
-              >Example two deep with query and hash</Interactive>
+              >Example two deep with query and hash</Link>
             </div>
           </div>
         )}
