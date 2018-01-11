@@ -47,12 +47,12 @@ class EmojiSpeaker extends PureComponent {
 
   componentDidMount() {
     setInterval(() => {
-      const index = Math.floor((Date.now() - start) / delay) % (message.length + 1)
-      emojiIcon.src = emojiCode[resolveCharacter(index) || defaultEmoji]
+      const index = Math.floor((Date.now() - start) / delay) % (message.length + 1);
+      emojiIcon.src = emojiCode[this.resolveCharacter(index) || defaultEmoji];
       const words = message.substr(0, index).split(' ');
       text.textContent = words.pop();
       previousText.textContent = words.pop();
-    }, delay);
+    }, 200);
   }
 
   componentWillUnmount() {
