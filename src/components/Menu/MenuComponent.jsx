@@ -31,7 +31,7 @@ class Menu extends PureComponent {
         <nav className={classnames('navbar', 'navbar-default', { 'menu-nav-white': this.state.scrollY > 0 })} style={{ backgroundColor: `rgba(255, 255, 255, ${opacity})` }}>
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand navbar-logo-brand" href="/">Dmitry Bondarchuk</a>
+              <a className="navbar-brand navbar-logo-brand" href="/">D. Bondarchuk</a>
             </div>
             <div className="navbar-collapse collapse" aria-expanded="false" style={{ height: 1 }}>
               <ul className="nav navbar-nav">
