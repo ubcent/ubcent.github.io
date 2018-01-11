@@ -85,7 +85,6 @@ module.exports = {
         background: '#1c1c1c',
         title: 'Dmitry Bondarchuk',
     
-        // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
         icons: {
           android: true,
           appleIcon: true,
