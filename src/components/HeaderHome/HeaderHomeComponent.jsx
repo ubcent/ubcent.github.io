@@ -32,7 +32,7 @@ class HeaderHome extends PureComponent {
         <div className="container-fluid">
           <div className="head-info">
             <div className="head-contents">
-              <h3>creating</h3>
+              <h3><span className="icon icon-a" /></h3>
               <h2>Good Thinking</h2>
               <p>Working together, to create something younique.</p>
               <button className="btn btn-default talk-head">Let's Talk</button>
