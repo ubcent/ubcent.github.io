@@ -3,6 +3,7 @@ let { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: `${__dirname}/src/index.jsx`,
@@ -58,6 +59,10 @@ module.exports = {
     ],
   },
 
+  devServer: {
+    index: 'template.html'
+  },
+
   plugins: process.argv.indexOf('-p') === -1 ? [
     new HtmlWebpackPlugin({
       template: `${__dirname}/template.html`,
@@ -69,6 +74,30 @@ module.exports = {
         output: {
           comments: false,
         },
+      }),
+      new FaviconsWebpackPlugin({
+        logo: resolve(__dirname, 'src', 'styles', 'logo.png'),
+        prefix: 'icons-[hash]/',
+        emitStats: false,
+        statsFilename: 'iconstats-[hash].json',
+        persistentCache: true,
+        inject: true,
+        background: '#1c1c1c',
+        title: 'Dmitry Bondarchuk',
+    
+        // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          opengraph: false,
+          twitter: false,
+          yandex: false,
+          windows: false
+        }
       }),
       new HtmlWebpackPlugin({
         template: `${__dirname}/template.html`,
