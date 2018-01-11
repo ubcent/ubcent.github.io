@@ -1,0 +1,77 @@
+@import '~styles/main.scss';
+
+.header-home {
+  background-image: url(./images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+
+  .bg-overly-header {
+    background: rgba(0,0,0,.52);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  .head-info {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .head-contents {
+    text-align: center;
+    color: #fff;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+
+    h3 {
+      font-family: Raleway, sans-serif;
+      text-transform: capitalize;
+      display: inline-block;
+      font-weight: 400;
+      font-size: 75px;
+      color: #fff;
+    }
+
+    h2 {
+      font-family: Montserrat, sans-serif;
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 100px;
+      color: #fff;
+    }
+
+    p {
+      text-transform: uppercase;
+      padding: 1% 0;
+      font-size: 22px;
+    }
+  }
+
+  .talk-head {
+    transition: all .5s ease-out;
+    text-transform: capitalize;
+    color: rgba(0,0,0,.75);
+    border: 1px solid #fff;
+    border-radius: 30px;
+    padding: 10px 4.5%;
+    background: #fff;
+    margin: 1% 2%;
+
+    &:hover {
+    background: 0 0;
+    color: #fff;
+  }
+  }
+}

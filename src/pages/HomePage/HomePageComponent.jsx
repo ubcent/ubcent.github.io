@@ -3,9 +3,12 @@ import './HomePageComponent.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import HeaderHome from 'components/HeaderHome';
+
 export default function Home() {
   return (
     <div>
+      <HeaderHome />
       <p>
         This is an example single page app built
         with React and React&nbsp;Router using {' '}
