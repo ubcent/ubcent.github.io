@@ -2,27 +2,7 @@ import './EmojiSpeakerComponent.scss';
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
-const delay = 200
-const message = "Arnold ipsum. Just bodies. I need your clothes, your boots, and your motorcycle. Grant me revenge! And if you do not listen, then to HELL with you. Make it quick because my horse is getting tired. Come on don't bullshit me. Into the tunnel. Bring your toy back to the carpet.";
-
-const defaultEmoji = "😐"
-const emojiCode = {}
-const emojis = Object.keys(emojiMap);
-const start = Date.now()
-emojis.forEach(emoji => emojiCode[emoji] = twemoji.parse(emoji, {
-  folder: 'svg',
-  ext: '.svg'
-}).slice('<img class="emoji" draggable="false" alt="😐" src="'.length, -3))
-console.log(emojiCode)
-
-setInterval(_ => {
-  const index = Math.floor((Date.now() - start) / delay) % (message.length + 1)
-  emojiIcon.src = emojiCode[resolveCharacter(index) || defaultEmoji]
-  const words = message.substr(0, index).split(' ')
-  text.textContent = words.pop()
-  previousText.textContent = words.pop()
-}, delay);
+import classnames from 'classnames';
 
 const emojiMap = {
   o: ['o', 'e'],
@@ -34,25 +14,45 @@ const emojiMap = {
   empty: [],
 };
 
+const emojis = Object.keys(emojiMap);
+
+const defaultEmoji = 'c';
+
 class EmojiSpeaker extends PureComponent {
   static propTypes = {
     message: PropTypes.string.isRequired,
+    delay: PropTypes.number.isRequired
+  }
+
+  static defaultProps = {
+    delay: 200
   }
 
   constructor(props) {
     super(props);
 
     this.timer = null;
+    this.start = Date.now();
+
+    this.state = {
+      currentWord: '',
+      previousWord: '',
+      emoji: defaultEmoji
+    }
   }
 
   componentDidMount() {
-    setInterval(() => {
-      const index = Math.floor((Date.now() - start) / delay) % (message.length + 1);
-      emojiIcon.src = emojiCode[this.resolveCharacter(index) || defaultEmoji];
+    const { delay, message } = this.props;
+    this.timer = setInterval(() => {
+      const index = Math.floor((Date.now() - this.start) / delay) % (message.length + 1);
       const words = message.substr(0, index).split(' ');
-      text.textContent = words.pop();
-      previousText.textContent = words.pop();
-    }, 200);
+
+      this.setState({
+        currentWord: words.pop(),
+        previousWord: words.pop(),
+        emoji: this.resolveCharacter(index) || defaultEmoji
+      });
+    }, delay);
   }
 
   componentWillUnmount() {
@@ -62,10 +62,24 @@ class EmojiSpeaker extends PureComponent {
   }
 
   resolveCharacter = (index) => {
+    const { message } = this.props;
     const character = message.toLowerCase()[index];
     const previousDouble = message.toLowerCase().substr(index - 1, index + 1);
     const nextDouble = message.toLowerCase().substr(index, index + 2);
+
     return emojis.find(e => emojiMap[e].indexOf(previousDouble) !== -1) || emojis.find(e => emojiMap[e].indexOf(nextDouble) !== -1) || emojis.find(e => emojiMap[e].indexOf(character) !== -1)
+  }
+
+  render() {
+    const { previousWord, currentWord, emoji } = this.state;
+    
+    return (
+      <div>
+        <h3><span className={classnames('icon', `icon-${emoji}`)} /></h3>
+        <h2>{previousWord}</h2>
+        <p>{currentWord}</p>
+      </div>
+    );
   }
 }
 
