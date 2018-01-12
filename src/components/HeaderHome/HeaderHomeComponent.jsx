@@ -3,6 +3,8 @@ import './HeaderHomeComponent.scss';
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 
+import EmojiSpeaker from 'components/EmojiSpeaker';
+
 class HeaderHome extends PureComponent {
   constructor(props) {
     super(props);
@@ -25,6 +27,8 @@ class HeaderHome extends PureComponent {
 
   render() {
     const { height } = this.state;
+
+    const message = 'Arnold ipsum. Just bodies. I need your clothes, your boots, and your motorcycle. Grant me revenge! And if you do not listen, then to HELL with you. Make it quick because my horse is getting tired. Come on don\'t bullshit me. Into the tunnel. Bring your toy back to the carpet.';
     return (
       <div className="header-home" style={{ height }}>
         <div className="bg-overly-header" />
@@ -32,9 +36,7 @@ class HeaderHome extends PureComponent {
         <div className="container-fluid">
           <div className="head-info">
             <div className="head-contents">
-              <h3>creating</h3>
-              <h2>Good Thinking</h2>
-              <p>Working together, to create something younique.</p>
+              <EmojiSpeaker message={message} />
               <button className="btn btn-default talk-head">Let's Talk</button>
             </div>
           </div>

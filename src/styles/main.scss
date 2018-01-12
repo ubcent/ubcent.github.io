@@ -1,5 +1,53 @@
 // @import 'antd/dist/antd.css';
 
+@font-face {
+  font-family: 'emoji';
+  src:  url('./fonts/emoji.eot?f3ljrc');
+  src:  url('./fonts/emoji.eot?f3ljrc#iefix') format('embedded-opentype'),
+    url('./fonts/emoji.ttf?f3ljrc') format('truetype'),
+    url('./fonts/emoji.woff?f3ljrc') format('woff'),
+    url('./fonts/emoji.svg?f3ljrc#emoji') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'emoji' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-a:before {
+  content: "\e900";
+}
+.icon-b:before {
+  content: "\e901";
+}
+.icon-c:before {
+  content: "\e902";
+}
+.icon-d:before {
+  content: "\e903";
+}
+.icon-empty:before {
+  content: "\e904";
+}
+.icon-o:before {
+  content: "\e905";
+}
+.icon-q:before {
+  content: "\e906";
+}
+
 * {
   box-sizing: border-box;
 }
