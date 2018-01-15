@@ -1,6 +1,6 @@
 import './EmojiSpeakerComponent.scss';
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -91,7 +91,7 @@ class EmojiSpeaker extends PureComponent {
     const values = this.generateValues();
 
     return (
-      <div>
+      <Fragment>
         <h3>
           <svg width="64" height="64">
             <path d="m32.00698,2c-16.568,0 -30,13.432 -30,30s13.432,30 30,30s30,-13.432 30,-30s-13.432,-30 -30,-30zm0,57.5c-15.164,0 -27.5,-12.336 -27.5,-27.5s12.336,-27.5 27.5,-27.5c15.163,0 27.5,12.336 27.5,27.5s-12.337,27.5 -27.5,27.5z" fill="white" />
@@ -100,7 +100,7 @@ class EmojiSpeaker extends PureComponent {
             <path fill="white">
               <animate
                 attributeName="d"
-                dur={`${150 * values.length}ms`}
+                dur={`${200 * values.length}ms`}
                 repeatCount="indefinite"
                 values={values.join(';')}
               />
@@ -109,7 +109,7 @@ class EmojiSpeaker extends PureComponent {
         </h3>
         <h2>{previousWord || '\u00A0'}</h2>
         <p>{currentWord || '\u00A0'}</p>
-      </div>
+      </Fragment>
     );
   }
 }
