@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import ExampleTwoDeepComponent from './ExampleTwoDeepComponent';
-import PageNotFound from './PageNotFoundComponent';
+import ExampleTwoDeepComponent from 'pages/ExampleTwoDeepComponent';
+import PageNotFound from 'pages/PageNotFoundComponent';
 
 const ExamplePageText = () => (
   <p>
@@ -15,7 +15,7 @@ export default function ExampleComponent() {
   return (
     <Switch>
       <Route
-        exact path="/example/two-deep"
+        exact path="/blog/two-deep"
         render={({ location }) => (
           <div>
             <ExamplePageText />
