@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'icons';
+  src:  url('../fonts/icons.eot?kmxjoe');
+  src:  url('../fonts/icons.eot?kmxjoe#iefix') format('embedded-opentype'),
+    url('../fonts/icons.ttf?kmxjoe') format('truetype'),
+    url('../fonts/icons.woff?kmxjoe') format('woff'),
+    url('../fonts/icons.svg?kmxjoe#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-redux:before {
+  content: "\e900";
+  color: #764abc;
+}
+.icon-react:before {
+  content: "\e901";
+  color: #61dafb;
+}
+.icon-webpack:before {
+  content: "\e902";
+  color: #8dd6f9;
+}
+.icon-server:before {
+  content: "\e964";
+}
+.icon-socket:before {
+  content: "\e9a5";
+}
+.icon-test:before {
+  content: "\e9aa";
+}
+.icon-router:before {
+  content: "\e9cc";
+}
+.icon-github:before {
+  content: "\eab0";
+}
